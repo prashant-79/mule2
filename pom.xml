@@ -27,18 +27,13 @@
   <extensions>true</extensions>
   <configuration>
      <cloudHubDeployment>
-      <uri>https://anypoint.mulesoft.com</uri>
-      <muleVersion>${app.runtime}</muleVersion>
-      <username>${username}</username>
-      <password>${password}</password>
-      <applicationName>mule-tic-tac-toe</applicationName>
-      <environment>${environment}</environment>
-      <region>${region}</region>
-      <workers>${workers}</workers>
-	 
-      <workerType>${workerType}</workerType>
-    
-    </cloudHubDeployment> 
+        <uri>https://anypoint.mulesoft.com</uri>
+        <muleVersion>4.3.0</muleVersion>
+	<username>Prashant1995</username>
+        <password>Prashant@65</password>
+	<applicationName>mulesoft1</applicationName>
+	<environment>Sandbox</environment>
+     </cloudHubDeployment> 
 	 
 	  
   </configuration>
