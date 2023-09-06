@@ -1,0 +1,16 @@
+# Use a base image with Java and Maven
+FROM maven:3.8.4-openjdk-11-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the pom.xml and download dependencies
+COPY pom.xml .
+
+RUN mvn dependency:go-offline
+
+# Copy the application source code
+COPY src/ ./src/
+
+# Run unit tests
+CMD ["mvn", "test"]
