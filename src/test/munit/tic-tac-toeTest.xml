@@ -1,58 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns="http://www.mulesoft.org/schema/mule/core"
-      xmlns:http="http://www.mulesoft.org/schema/mule/http"
-      xmlns:munit="http://www.mulesoft.org/schema/mule/munit"
-      xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-      xmlns:spring="http://www.springframework.org/schema/beans"
-      version="EE-4.4.0"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core
-                          http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-                          http://www.springframework.org/schema/beans
-                          http://www.springframework.org/schema/beans/spring-beans-current.xsd
-                          http://www.mulesoft.org/schema/mule/http
-                          http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-                          http://www.mulesoft.org/schema/mule/munit
-                          http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd">
 
-    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="new-test-suite.xml" />
+	<munit:test name="new-test-suite-mulesoft1FlowTest" doc:id="c84a831e-d00a-4d0f-b6c9-d081a4807b90" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to tic-tac-toeFlow-login" doc:id="0d7e41a8-51c3-47ca-8f9f-1dbe8d7d9e62" name="tic-tac-toeFlow-login"/>
+		</munit:execution>
+	</munit:test>
 
-    <flow name="tic-tac-toeFlow-login">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/myEndpoint" doc:name="HTTP"/>
-        <!-- Your processing logic goes here -->
-        <set-payload value="Hello, #[message.inboundProperties['http.query.params']['name']]" doc:name="Set Payload"/>
-    </flow>
-
-    <munit:test name="tic-tac-toeFlow-startPlay">
-        <munit:config name="mule-config.xml"/>
-        <munit:coverage>
-            <munit:file name="src/main/mule/tic-tac-toe.xml"/>
-        </munit:coverage>
-          
-        <munit:input-message>
-            <http:listener-response statusCode="200" reasonPhrase="OK"/>
-        </munit:input-message>
-
-        <munit:output-message>
-            <payload><![CDATA[%dw 2.0
-output application/json
----
-{
-	index1 :vars.RA.index1 default "#",
-	index2 :vars.RA.index2 default "#",
-	index3 :vars.RA.index3 default "#",
-	index4 :vars.RA.index4 default "#",
-	index5 :vars.RA.index5 default "#",
-	index6 :vars.RA.index6 default "#",
-	index7 :vars.RA.index7 default "#",
-	index8 :vars.RA.index8 default "#",
-	index9 :vars.RA.index9 default "#"
-	
-	
-}]]></payload>
-        </munit:output-message>
-    </munit:test>
-
-    </munit:test>
 
 </mule>
