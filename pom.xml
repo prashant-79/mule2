@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mycompany</groupId>
-    <artifactId>mulesoft1</artifactId>
+    <artifactId>tic-tac-toe</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>mule-application</packaging>
 
-    <name>mulesoftapp</name>
+    <name>tic-tac-toe</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -59,7 +59,7 @@
                     <cloudHubDeployment>
                         <uri>https://anypoint.mulesoft.com</uri>
                         <muleVersion>4.4.0</muleVersion>
-                        <applicationName>mulesoftapp</applicationName>
+                        <applicationName>tic-tac-toe</applicationName>
                         <environment>Sandbox</environment>
                         <workers>1</workers>
                         <workerType>Micro</workerType>    
